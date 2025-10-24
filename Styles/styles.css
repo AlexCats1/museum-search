@@ -15,7 +15,6 @@ button color / big element: #FF9D00
 }
 
 body {
-    height: 100vh;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -37,12 +36,13 @@ body {
 
 .carousel {
     /* carousel itself */
-    padding-top: 4vh;
+    /* margin-top: 50px; */
+    /* this helps with the hero, as when an element's position is fixed, then the other elements dont count that as a space in the document/page. we have to use a margin to specify where the element, in this case this flex will start so we prevent the problem we had before with the elements stacking each other.*/
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    height: 100vh;
+    height: 80vh;
     overflow: hidden;
     gap: 10px;
     /* the overflow hidden is so the bar below doesnt appear, as the images in our carousel are extended to the right of the screen, so normally the bar below would appear to scroll horizontally.*/
@@ -67,7 +67,7 @@ body {
             /* this is to calculate the width of the images. we found that */
         }
 
-        & img:hover{
+        & img:hover {
             opacity: 0.7;
             cursor: pointer;
         }
@@ -76,7 +76,6 @@ body {
     & h1 {
         text-align: center;
     }
-
 }
 
 @keyframes carousel-animation {
@@ -105,11 +104,13 @@ body {
 
 .hero {
     display: flex;
+    height: 50px;
     align-items: center;
     justify-content: left;
-    height: 5vh;
+    height: auto;
+    z-index: 1;
     width: 100%;
-    background: transparent;
+    background: #181818;
     border: 2px solid #B6771D;
     border-right: none;
     border-left: none;
@@ -134,9 +135,14 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2vh;
+    gap: 10px;
+
+    & h2 {
+        text-align: center;
+    }
 
     & a {
+
         display: flex;
         align-items: center;
         text-align: center;
@@ -144,8 +150,7 @@ body {
 
         font-size: 20px;
         height: auto;
-        width: 30%;
-        max-width: 30%;
+        max-width: 90%;
         background: #FF9D00;
         border: 3px solid transparent;
         border-radius: 10px;
@@ -159,10 +164,6 @@ body {
         transform: scale(1.1);
         opacity: 0.7;
         cursor: pointer;
-    }
-
-    & h2{
-        
     }
 }
 
@@ -188,7 +189,7 @@ body {
         font-size: 15px;
     }
 
-    & button{
+    & button {
         background: #FF9D00;
         height: 50px;
         width: 20%;
@@ -198,21 +199,22 @@ body {
         transition: 0.2s;
     }
 
-    & button:hover{
+    & button:hover {
         opacity: 0.7;
         cursor: pointer;
     }
 }
 
-@media screen and (max-width: 800px){
-    .carousel{
-        & h1{
-            font-size: 2.5vh;
+@media screen and (max-width: 800px) {
+    .carousel {
+        & h1 {
+            font-size: 1.2rem;
         }
     }
-    .subtitle_flex{
-        & h2{
-            font-size: 1.7vh;
+
+    .subtitle_flex {
+        & h2 {
+            font-size: 0.8rem;
         }
     }
 }
