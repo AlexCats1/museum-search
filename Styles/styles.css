@@ -38,6 +38,7 @@ body {
     /* carousel itself */
     /* margin-top: 50px; */
     /* this helps with the hero, as when an element's position is fixed, then the other elements dont count that as a space in the document/page. we have to use a margin to specify where the element, in this case this flex will start so we prevent the problem we had before with the elements stacking each other.*/
+    margin-top: 50px; /* its better to use this method instead of just using z-index: 1 for the hero (anyways, the z-index: 1 has to be used for other elements). this prevents the top part of whatever is following after the hero (in this case would be the carousel flex) to not hide under the hero, having that margin above to prevent this.*/
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -108,7 +109,7 @@ body {
     align-items: center;
     justify-content: left;
     height: auto;
-    z-index: 1;
+    z-index: 1; /* z-index: 1 is so it always stays on top of the other elements, as we want the hero to behave like this.*/
     width: 100%;
     background: #181818;
     border: 2px solid #B6771D;
@@ -135,6 +136,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 5vh;
     gap: 10px;
 
     & h2 {
@@ -205,6 +207,37 @@ body {
     }
 }
 
+.results_table{
+    border: 3px solid #B6771D;
+    border-radius: 10px;
+    height: 50%;
+    width: 100%; /* seems like the width depends on the size of the content. if for example the content's size for the width is 100px, then if we use 100% on a child for its width, then its width will be 100px. if instead we used 50%, then the width would be 50px instead of 100px. take in mind this when assigning widths and heights.*/
+}
+
+.search_page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    height: 100vh;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    height: 50px;
+    width: 100%;
+    border: 2px solid #B6771D;
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
+    text-align: center;
+    font-size: 1rem;
+}
+
 @media screen and (max-width: 800px) {
     .carousel {
         & h1 {
@@ -216,5 +249,14 @@ body {
         & h2 {
             font-size: 0.8rem;
         }
+
+        & a{
+            font-size: 1rem;
+        }
+    }
+
+    .footer{
+        font-size: 0.7rem;
     }
 }
+
