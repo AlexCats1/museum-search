@@ -169,6 +169,22 @@ body {
     }
 }
 
+.results_table{
+    border: 3px solid #B6771D;
+    border-radius: 10px;
+    height: 50%;
+    width: 100%; /* seems like the width depends on the size of the content. if for example the content's size for the width is 100px, then if we use 100% on a child for its width, then its width will be 100px. if instead we used 50%, then the width would be 50px instead of 100px. take in mind this when assigning widths and heights.*/
+}
+
+.search_page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    height: 100vh;
+}
+
 .search_bar {
     display: flex;
     align-items: center;
@@ -207,20 +223,33 @@ body {
     }
 }
 
-.results_table{
-    border: 3px solid #B6771D;
-    border-radius: 10px;
-    height: 50%;
-    width: 100%; /* seems like the width depends on the size of the content. if for example the content's size for the width is 100px, then if we use 100% on a child for its width, then its width will be 100px. if instead we used 50%, then the width would be 50px instead of 100px. take in mind this when assigning widths and heights.*/
-}
-
-.search_page{
+.checkboxes_container{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    height: 100vh;
+    flex-direction: row;
+    width: 80%;
+    gap: 5px; /* we assign the gap for the rows itself. this affects the width of childs of the container, so in the width we do a calculation, as we can see in the div.search_checkbox */
+
+    flex-wrap: wrap; /* with wrap we can make the items break into different rows or columns, depending the flex-direction. but we have to specify the width of the items. in this case we want 5 items per row, so the width will be 20% for the childs, minus the gap (the calculation that we did below here.)*/
+
+    & div.search_checkbox{
+        display: flex;
+
+        gap: 5px; /* the 5px gap here is just to have a gap between the elements of the search_checkbox div, the label and the checkbox or input, so this doesnt affects directly to the calculation below.*/
+
+        width: calc(20% - 5px); /* as we put 5px gap vetween rows, we just calc the 20% that we want minus the 5px gap, so everything fits correctly. */
+
+        & input[type="checkbox"]{
+            accent-color: #FF9D00;
+
+            transition: 0.2s;
+        }
+
+        & input:hover{
+            opacity: 0.7;
+            cursor: pointer;
+        }
+
+    }
 }
 
 .footer{
@@ -257,6 +286,16 @@ body {
 
     .footer{
         font-size: 0.7rem;
+    }
+
+    .checkboxes_container{
+
+        & div.search_checkbox{
+
+            & label{
+                font-size: 10px;
+            }
+        }
     }
 }
 
